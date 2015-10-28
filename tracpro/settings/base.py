@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'djcelery',
     'guardian',
     'mptt',
+    'rest_framework',
     'reversion',
     'sorl.thumbnail',
     'smart_selects',
@@ -181,6 +182,11 @@ MIDDLEWARE_CLASSES = (
     'tracpro.groups.middleware.UserRegionsMiddleware',
     'tracpro.orgs_ext.middleware.HandleTembaAPIError',
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGE_SIZE': 10
+}
 
 ROOT_URLCONF = 'tracpro.urls'
 
