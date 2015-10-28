@@ -26,6 +26,7 @@ django-rosetta==0.7.6
 django-smart-selects==1.1.1
 django-storages==1.1.8
 django-timezones==0.2
+djangorestframework==3.2.4
 enum34==1.0.4
   Markdown==2.6.2
   Pygments==2.0.2
