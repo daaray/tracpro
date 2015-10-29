@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'tracpro.orgs_ext.apps.DashOrgConfig',
     'dash.utils',
 
+    'tracpro.api',
     'tracpro.baseline',
     'tracpro.contacts',
     'tracpro.groups',
