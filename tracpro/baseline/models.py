@@ -79,7 +79,7 @@ class BaselineTerm(models.Model):
             region_filter = regions
             all_regions = regions
         if region_selected:
-            region_filter = Region.objects.filter(pk=region_selected)
+            region_filter = Region.objects.filter(pk=region_selected.pk)
 
         responses = responses.filter(contact__region__in=region_filter)
 
