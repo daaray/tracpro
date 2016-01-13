@@ -23,9 +23,9 @@
 
 {% block content %}
   <div class="pull-right buttons">
-    <button type="button" class="btn btn-primary" id="toggle-filters"
+    <button type="button" class="btn btn-default" id="toggle-filters"
             data-toggle="collapse" data-target="#filters">
-      Hide filters...
+      {% trans "Hide filters..." %}
     </button>
   </div>
 
@@ -38,7 +38,9 @@
           <div class="alert alert-danger">{{ error }}</div>
         {% endfor %}
       {% elif form.errors %}
-        <div class="alert alert-danger">Please fix the errors below.</div>
+        <div class="alert alert-danger">
+          {% trans "Please fix the errors below." %}
+        </div>
       {% endif %}
 
       <div class="row">
@@ -61,8 +63,12 @@
       {% endfor %}
 
       <div class="well">
-        <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{% url "polls.poll_read" object.pk %}" class="btn btn-default">Clear filters</a>
+        <button type="submit" class="btn btn-primary">
+          {% trans "Update" %}
+        </button>
+        <a href="{% url "polls.poll_read" object.pk %}" class="btn btn-default">
+          {% trans "Clear filters" %}
+        </a>
       </div>
     </form>
   </div>
@@ -83,9 +89,9 @@
         {% if question.question_type == question.TYPE_NUMERIC %}
           <span class="data-type"></span>
         {% elif question.question_type == question.TYPE_OPEN %}
-          Open-ended
+          {% trans "Open-ended" %}
         {% elif question.question_type == question.TYPE_MULTIPLE_CHOICE %}
-          Categorical
+          {% trans "Categorical" %}
         {% endif %}
       </h3>
 
@@ -99,15 +105,21 @@
           <table class="table table-striped">
             <tbody>
               <tr class="read">
-                <td class="read-half read-label">Mean</td>
+                <td class="read-half read-label">
+                  {% trans "Mean" %}
+                </td>
                 <td class="read-half read-value">{{ question.answer_mean }}</td>
               </tr>
               <tr class="read">
-                <td class="read-half read-label">Standard Deviation</td>
+                <td class="read-half read-label">
+                  {% trans "Standard Deviation" %}
+                </td>
                 <td class="read-half read-value">{{ question.answer_stdev }}</td>
               </tr>
               <tr class="read">
-                <td class="read-half read-label">Response Rate Average</td>
+                <td class="read-half read-label">
+                  {% trans "Response Rate Average" %}
+                </td>
                 <td class="read-half read-value">{{ question.response_rate_average }}%</td>
               </tr>
             </tbody>
@@ -115,11 +127,13 @@
         {% endif %}
       {% else %}
         <div class="chart-no-data">
-          No data to display for this time period.
+          {% trans "No data to display for this time period." %}
         </div>
       {% endif %}
     </div>
   {% empty %}
-    <div>There are no questions to display.</div>
+    <div>
+      {% trans "There are no questions to display." %}
+    </div>
   {% endfor %}
 {% endblock content %}
