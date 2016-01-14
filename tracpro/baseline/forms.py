@@ -146,8 +146,4 @@ class BaselineTermFilterForm(forms.Form):
 
     def __init__(self, baseline_term, *args, **kwargs):
         super(BaselineTermFilterForm, self).__init__(*args, **kwargs)
-        questions = [baseline_term.baseline_question_id, baseline_term.follow_up_question_id]
-        regions = Region.objects.filter(
-            contacts__responses__answers__question__in=questions)
-        regions = regions.distinct().order_by('name')
-        self.fields['region'].queryset = regions
+        self.fields['region'].queryset = baseline_term.get_regions()

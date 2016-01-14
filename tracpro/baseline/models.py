@@ -59,6 +59,13 @@ class BaselineTerm(models.Model):
         baseline_terms = cls.objects.filter(org=org)
         return baseline_terms
 
+    def get_regions(self):
+        """Return regions for the contacts who responded to related polls."""
+        questions = [self.baseline_question_id, self.follow_up_question_id]
+        regions = Region.objects.filter(
+            contacts__responses__answers__question__in=questions)
+        regions = regions.distinct().order_by('name')
+
     def _get_answers(self, question, poll, regions, region_selected=None):
         """
         Retrieve answers to the question that are relevant for this
